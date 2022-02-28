@@ -75,6 +75,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
   const newUser = await User.findOne({ email });
 
   if (newUser && (await bcrypt.compare(password, newUser.password))) {

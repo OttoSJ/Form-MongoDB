@@ -4,6 +4,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const { errorHandler } = require("./middleware/errorMiddleware");
 const methodOverride = require("method-override");
 
 // CONFIGURATION
@@ -22,15 +23,13 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-// app.use("/users", userRoutes);
 
 // ROUTES AND LANDING PAGE
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/games", require("./routes/gameRoutes"));
 
 // WILDCARD ROUTE
-// app.get("*", (req, res) => {
-//   res.send("error404");
-// });
+app.use(errorHandler);
 
 // CONNECT TO DATABASE => LISTEN FOR PORT
 mongoose
