@@ -6,7 +6,7 @@ function Navbar(data) {
     <Html>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
         <div className="container">
-          <a href="/" className="navbar-brand">
+          <a href="/api/users" className="navbar-brand">
             Home
           </a>
           <button
@@ -20,7 +20,7 @@ function Navbar(data) {
           <div className="collapse navbar-collapse" id="navmenu">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a href="/users" className="nav-link">
+                <a href="users/signup" className="nav-link">
                   Signup
                 </a>
               </li>

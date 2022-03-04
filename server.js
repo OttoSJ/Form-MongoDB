@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 // ROUTES AND LANDING PAGE
+// app.use("/homepage", requrie("./routes/homepageRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/games", require("./routes/gameRoutes"));
 

@@ -72,6 +72,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Invaled user data");
   }
+  res.redirect("/api/users");
 });
 
 const loginUser = asyncHandler(async (req, res) => {
