@@ -10,7 +10,7 @@ const methodOverride = require("method-override");
 // CONFIGURATION
 const PORT = process.env.PORT || 5005;
 const app = express();
-// const userRoutes = require("./controllers/userController");
+
 const bcryptjs = require("bcryptjs");
 
 // VIEW ENGINE

@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 
 // CONFIGURATIONS
-const router = express.Router();
+// const router = express.Router();
 
 const registerUser = asyncHandler(async (req, res) => {
   const {
@@ -62,17 +62,17 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (newUser) {
-    res.status(201).json({
-      _id: newUser.id,
-      username: newUser.username,
-      email: newUser.email,
-      token: generateToken(newUser._id),
-    });
+    res.redirect("/api/users");
+    // res.status(201).json({
+    //   _id: newUser.id,
+    //   username: newUser.username,
+    //   email: newUser.email,
+    //   token: generateToken(newUser._id),
+    // });
   } else {
     res.status(400);
     throw new Error("Invaled user data");
   }
-  res.redirect("/api/users");
 });
 
 const loginUser = asyncHandler(async (req, res) => {

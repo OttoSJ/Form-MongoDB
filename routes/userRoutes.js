@@ -1,6 +1,6 @@
 // DEPENDENCIES
 const express = require("express");
-const { render } = require("express/lib/response");
+
 const {
   registerUser,
   loginUser,
