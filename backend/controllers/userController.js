@@ -5,9 +5,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 
-// CONFIGURATIONS
-// const router = express.Router();
-
 const registerUser = asyncHandler(async (req, res) => {
   const {
     username,
@@ -63,15 +60,9 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (newUser) {
     res.redirect("/api/users");
-    // res.status(201).json({
-    //   _id: newUser.id,
-    //   username: newUser.username,
-    //   email: newUser.email,
-    //   token: generateToken(newUser._id),
-    // });
   } else {
     res.status(400);
-    throw new Error("Invaled user data");
+    throw new Error("Invalid user data");
   }
 });
 
