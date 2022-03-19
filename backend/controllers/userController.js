@@ -7,12 +7,12 @@ const User = require("../models/userModel");
 
 const registerUser = asyncHandler(async (req, res) => {
   const {
-    username,
-    password,
-    email,
-    address,
     firstname,
     lastname,
+    password,
+    username,
+    email,
+    address,
     city,
     state,
     zip,
@@ -20,12 +20,12 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // Check for required fields
   if (
-    !username ||
-    !password ||
-    !email ||
-    !address ||
     !firstname ||
     !lastname ||
+    !password ||
+    !username ||
+    !email ||
+    !address ||
     !city ||
     !state ||
     !zip
@@ -59,7 +59,12 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   if (newUser) {
-    res.redirect("/api/users");
+    res.status(201).json({
+      _id: newUser.id,
+      name: newUser.username,
+      email: newUser.email,
+      token: generateToken(newUser._id),
+    });
   } else {
     res.status(400);
     throw new Error("Invalid user data");

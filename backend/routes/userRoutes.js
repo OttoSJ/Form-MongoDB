@@ -12,15 +12,15 @@ const router = express.Router();
 
 // Remember to protect routes here and add to the router.get routes!!!!!
 
-router.get("/", (req, res) => {
-  res.render("home");
-});
+// router.get("/", (req, res) => {
+//   res.render("home");
+// });
 
-router.get("/signup", (req, res) => {
-  res.render("signup");
-});
+// router.get("/signup", (req, res) => {
+//   res.render("signup");
+// });
 
-router.post("/signup", registerUser);
+router.post("/", registerUser);
 router.post("/login", loginUser);
 router.get("/me", getUser);
 
