@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 
 function Navbar() {
   return (
-    <Nav activityKey="/" className=" bg-dark navbar-dark">
+    <Nav className=" bg-dark navbar-dark p-2">
       <Nav.Item>
         <Nav.Link href="/" className="navbar-brand">
           Home

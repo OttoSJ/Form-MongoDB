@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
+import Form from "react-bootstrap/Form";
 
 // I need to refractor this form, the method and action should become onSubmit and I'll need to add onChange.
 
