@@ -20,8 +20,8 @@ export const register = createAsyncThunk(
       const message =
         (error.response &&
           error.response.data &&
-          // error.response.data.message) ||
-          error.message) ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
     }

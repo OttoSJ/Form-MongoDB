@@ -36,7 +36,7 @@ function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isLoading, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -264,16 +264,7 @@ function Register() {
             />
           </div>
           <div className="col-12">
-            <div className="form-check">
-              {/* <input
-                className="form-check-input"
-                type="checkbox"
-                id="gridCheck"
-              /> */}
-              {/* <label className="form-check-label" htmlFor="gridCheck">
-                Email Me
-              </label> */}
-            </div>
+            <div className="form-check"></div>
           </div>
           <div className="col-12">
             <button type="submit" className="btn btn-primary">
