@@ -1,12 +1,90 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register, reset } from "../features/auth/authSlice";
 
 // I need to refractor this form, the method and action should become onSubmit and I'll need to add onChange.
 
 function Register() {
+  const [formData, setFromData] = useState({
+    firstname: "",
+    lastname: "",
+    password: "",
+    password2: "",
+    username: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
+
+  const {
+    firstname,
+    lastname,
+    password,
+    password2,
+    username,
+    email,
+    address,
+    city,
+    state,
+    zip,
+  } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setFromData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      toast.error("Passwords do not match");
+    } else {
+      const userData = {
+        username,
+        password,
+        password2,
+        email,
+        address,
+        firstname,
+        lastname,
+        city,
+        state,
+        zip,
+      };
+      console.log(userData);
+      dispatch(register(userData));
+    }
+  };
+
   return (
     <div>
       <div className="container">
-        <form className="row g-3 mt-3">
+        <form onSubmit={onSubmit} className="row g-3 mt-3">
           <div className="col-6">
             <label htmlFor="firstname" className="form-label">
               First Name
@@ -18,6 +96,7 @@ function Register() {
               name="firstname"
               id="firstname"
               placeholder="First Name"
+              onChange={onChange}
             />
           </div>
           <div className="col-6">
@@ -30,6 +109,7 @@ function Register() {
               name="lastname"
               id="lastname"
               placeholder="Last Name"
+              onChange={onChange}
             />
           </div>
 
@@ -42,6 +122,7 @@ function Register() {
               className="form-control"
               name="password"
               id="password"
+              onChange={onChange}
             />
           </div>
           <div className="col-md-6">
@@ -53,6 +134,7 @@ function Register() {
               className="form-control"
               name="password2"
               id="password2"
+              onChange={onChange}
             />
           </div>
           <div className="col-md-12">
@@ -64,6 +146,7 @@ function Register() {
               className="form-control"
               name="username"
               id="username"
+              onChange={onChange}
             />
           </div>
           <div className="col-md-6">
@@ -75,6 +158,7 @@ function Register() {
               className="form-control"
               name="email"
               id="inputEmail4"
+              onChange={onChange}
             />
           </div>
           <div className="col-6">
@@ -87,6 +171,7 @@ function Register() {
               name="address"
               id="address"
               placeholder="1234 Main St"
+              onChange={onChange}
             />
           </div>
 
@@ -94,13 +179,24 @@ function Register() {
             <label htmlFor="city" className="form-label">
               City
             </label>
-            <input type="text" className="form-control" name="city" id="city" />
+            <input
+              type="text"
+              className="form-control"
+              name="city"
+              id="city"
+              onChange={onChange}
+            />
           </div>
           <div className="col-md-4">
             <label htmlFor="state" className="form-label">
               State
             </label>
-            <select id="state state-list" name="state" className="form-select">
+            <select
+              id="state state-list"
+              name="state"
+              className="form-select"
+              onChange={onChange}
+            >
               <option value="Choose">Choose...</option>
 
               <option value="AK">Alaska</option>
@@ -159,18 +255,24 @@ function Register() {
             <label htmlFor="zip" className="form-label">
               Zip
             </label>
-            <input type="text" className="form-control" name="zip" id="zip" />
+            <input
+              type="text"
+              className="form-control"
+              name="zip"
+              id="zip"
+              onChange={onChange}
+            />
           </div>
           <div className="col-12">
             <div className="form-check">
-              <input
+              {/* <input
                 className="form-check-input"
                 type="checkbox"
                 id="gridCheck"
-              />
-              <label className="form-check-label" htmlFor="gridCheck">
+              /> */}
+              {/* <label className="form-check-label" htmlFor="gridCheck">
                 Email Me
-              </label>
+              </label> */}
             </div>
           </div>
           <div className="col-12">
