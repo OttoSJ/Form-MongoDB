@@ -29,7 +29,7 @@ app.use(methodOverride("_method"));
 // ROUTES AND LANDING PAGE
 // app.use("/homepage", requrie("./routes/homepageRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/games", require("./routes/gameRoutes"));
+app.use("/api/messages", require("./routes/messageRoutes"));
 
 // WILDCARD ROUTE
 app.use(errorHandler);

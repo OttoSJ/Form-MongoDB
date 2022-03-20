@@ -89,13 +89,17 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const getUser = asyncHandler(async (req, res) => {
-  const { _id, username, email } = await User.findById(req.user.id);
-  res.status(200).json({
-    id: _id,
-    username,
-    email,
-  });
+  res.status(200).json(req.user);
 });
+
+// const getUser = asyncHandler(async (req, res) => {
+//   const { _id, username, email } = await User.findById(req.user.id);
+//   res.status(200).json({
+//     id: _id,
+//     username,
+//     email,
+//   });
+// });
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {

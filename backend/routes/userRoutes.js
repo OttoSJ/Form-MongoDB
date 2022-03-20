@@ -1,5 +1,6 @@
 // DEPENDENCIES
 const express = require("express");
+const router = express.Router();
 
 const {
   registerUser,
@@ -7,10 +8,7 @@ const {
   getUser,
 } = require("../controllers/userController");
 
-//  CONFIGURATIONS
-const router = express.Router();
-
-// Remember to protect routes here and add to the router.get routes!!!!!
+const { protect } = require("../middleware/authMiddleware");
 
 // router.get("/", (req, res) => {
 //   res.render("home");
@@ -22,6 +20,6 @@ const router = express.Router();
 
 router.post("/", registerUser);
 router.post("/login", loginUser);
-router.get("/me", getUser);
+router.get("/me", protect, getUser);
 
 module.exports = router;
