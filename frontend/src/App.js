@@ -4,9 +4,9 @@ import Navbar from "./views/layouts/Navbar";
 import Dashboard from "./views/Dashboard";
 import Login from "./views/Login";
 import Register from "./views/Register";
+import HomePage from "./views/HomePage";
 import "react-toastify/dist/ReactToastify.css";
-
-// I need to add routes for the navbar. So import the BrowserRouter as Router, Routes, Route from react-router-dom. Also need to import all the componenets to make sure they render.
+import Messages from "./views/layouts/Messages";
 
 function App() {
   return (
@@ -15,7 +15,15 @@ function App() {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <HomePage /> <Messages />{" "}
+                </>
+              }
+            />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

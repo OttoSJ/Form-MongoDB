@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import { FaUser } from "react-icons/fa";
 
 // I need to refractor this form, the method and action should become onSubmit and I'll need to add onChange.
 
@@ -46,7 +47,7 @@ function Register() {
       toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/dashboard");
     }
 
     dispatch(reset());
@@ -85,6 +86,11 @@ function Register() {
   return (
     <div>
       <div className="container">
+        <h1 className="mt-5 headings">
+          {" "}
+          <FaUser /> Register User
+          <p className="p-5">Please Create Your Account!</p>
+        </h1>
         <form onSubmit={onSubmit} className="row g-3 mt-3">
           <div className="col-6">
             <label htmlFor="firstname" className="form-label">
@@ -151,14 +157,14 @@ function Register() {
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-label">
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input
               type="email"
               className="form-control"
               name="email"
-              id="inputEmail4"
+              id="email"
               onChange={onChange}
             />
           </div>
@@ -264,9 +270,9 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="col-12">
+          {/* <div className="col-12">
             <div className="form-check"></div>
-          </div>
+          </div> */}
           <div className="col-12">
             <button type="submit" className="btn btn-primary">
               Submit
