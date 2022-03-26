@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
-// import Form from "react-bootstrap/Form";
 import { FaUser } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 // I need to refractor this form, the method and action should become onSubmit and I'll need to add onChange.
 
@@ -82,6 +82,10 @@ function Register() {
       dispatch(register(userData));
     }
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <div>
@@ -270,9 +274,7 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          {/* <div className="col-12">
-            <div className="form-check"></div>
-          </div> */}
+
           <div className="col-12">
             <button type="submit" className="btn btn-primary">
               Submit

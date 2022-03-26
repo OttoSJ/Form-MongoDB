@@ -9,7 +9,7 @@ const messageSchema = mongoose.Schema(
     },
     message: {
       type: String,
-      requried: [true, "Please add a text value"],
+      required: [true, "Please add a text value"],
     },
     likes: {
       liked: Number,

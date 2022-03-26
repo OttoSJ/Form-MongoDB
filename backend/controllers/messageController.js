@@ -13,15 +13,15 @@ const getMessages = asyncHandler(async (req, res) => {
 // ROUTE POST/api/games
 // ACCESS Private
 const setMessages = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  if (!req.body.message) {
     res.status(400);
-    throw new Error("Please select a lecture");
+    throw new Error("Please add a text");
   }
-  const message = await Message.create({
+  const messages = await Message.create({
     message: req.body.message,
     user: req.user.id,
   });
-  res.status(200).json("Got message");
+  res.status(200).json(messages);
 });
 
 // UPDATE Messages
@@ -63,7 +63,7 @@ const deleteMessages = asyncHandler(async (req, res) => {
 
   if (!message) {
     res.status(400);
-    throw new Error("Goal not found");
+    throw new Error("Message not found");
   }
 
   if (!req.user) {

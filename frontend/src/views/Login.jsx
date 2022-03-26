@@ -4,6 +4,7 @@ import { login, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -47,6 +48,10 @@ function Login() {
     dispatch(login(userData));
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <header className="headings mt-5">
@@ -59,7 +64,7 @@ function Login() {
       <section>
         <form onSubmit={onSubmit} className="mt-5">
           <div className="container-centered">
-            <div className="col-8">
+            <div className="col-6">
               <label htmlFor="email" className="form-label">
                 Email
               </label>
@@ -74,7 +79,7 @@ function Login() {
               />
             </div>
             <br />
-            <div className="col-8">
+            <div className="col-6">
               <label htmlFor="password" className="form-label">
                 Password
               </label>

@@ -1,4 +1,5 @@
 import React from "react";
+import MessageForm from "../views/layouts/MessageForm";
 
 function HomePage() {
   return (
