@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import { FaUser } from "react-icons/fa";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 
 // I need to refractor this form, the method and action should become onSubmit and I'll need to add onChange.
 

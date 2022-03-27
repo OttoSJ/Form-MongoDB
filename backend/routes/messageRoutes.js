@@ -9,7 +9,7 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 
-router.get("/", getMessages);
+router.get("/", protect, getMessages);
 
 router.post("/", protect, setMessages);
 

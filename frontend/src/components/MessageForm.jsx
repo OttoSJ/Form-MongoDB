@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { createMessage } from "../../features/messages/messageSlice";
+import { createMessage } from "../features/messages/messageSlice";
 
 function MessageForm() {
   const [text, setText] = useState("");
@@ -11,7 +11,7 @@ function MessageForm() {
     dispatch(createMessage({ message: text }));
     setText("");
   };
-  console.log(text);
+  // console.log(text);
   return (
     <section>
       <form className="message-form" onSubmit={onSubmit}>
