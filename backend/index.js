@@ -7,24 +7,16 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const { errorHandler } = require("./middleware/errorMiddleware");
-// const methodOverride = require("method-override");
 
 // CONFIGURATION
 const PORT = process.env.PORT || 5005;
 const app = express();
-
 const bcryptjs = require("bcryptjs");
-
-// VIEW ENGINE
-app.set("views", __dirname + "/views");
-app.set("view engine", "jsx");
-app.engine("jsx", require("express-react-views").createEngine());
 
 // MIDDLEWARE
 app.use(express.json());
-app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-// app.use(methodOverride("_method"));
+// app.use(express.static("public"));
 
 // ROUTES AND LANDING PAGE
 // app.use("/homepage", requrie("./routes/homepageRoutes"));

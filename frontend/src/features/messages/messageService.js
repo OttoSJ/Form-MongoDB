@@ -24,6 +24,11 @@ const getMessages = async (token) => {
   return response.data;
 };
 
+const getAllMessages = async () => {
+  const response = await axios.get(API_URL);
+  return response.data;
+};
+
 const deleteMessage = async (messageId, token) => {
   const config = {
     headers: {
@@ -33,9 +38,11 @@ const deleteMessage = async (messageId, token) => {
   const response = await axios.delete(API_URL + messageId, config);
   return response.data;
 };
+
 const messageService = {
   createMessage,
-  getMessages,
   deleteMessage,
+  getMessages,
+  getAllMessages,
 };
 export default messageService;

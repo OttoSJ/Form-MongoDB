@@ -58,7 +58,7 @@ function Login() {
         <h1>
           <p>Registered Users Login</p>
         </h1>
-        <h5>If you have as account with us, log in using your email address</h5>
+        <h5>If you have an account with us, log in using your email address</h5>
       </header>
 
       <section>

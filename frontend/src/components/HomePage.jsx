@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMessages, reset } from "../features/messages/messageSlice";
 import Messages from "./Messages";
+import MessageForm from "../components/MessageForm";
 
 function HomePage() {
   const { user } = useSelector((state) => state.auth);
@@ -23,12 +24,19 @@ function HomePage() {
 
   return (
     <>
-      <div className="headings mt-5">
-        <h1>
-          <p>HomePage</p>
-        </h1>
+      <div className="homepage-container">
+        <div className="headings mt-5">
+          <h1 className="mb-5">
+            <p>HomePage</p>
+          </h1>
+        </div>
+        <div className="">
+          <Messages />
+        </div>
+        <footer className="footer bg-dark">
+          <MessageForm />
+        </footer>
       </div>
-      <Messages />
     </>
   );
 }

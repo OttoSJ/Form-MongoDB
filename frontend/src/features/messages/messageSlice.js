@@ -28,6 +28,23 @@ export const createMessage = createAsyncThunk(
   }
 );
 
+export const getAllMessages = createAsyncThunk(
+  "messages/getAll",
+  async (_, thunkAPI) => {
+    try {
+      return await messageService.getAllMessages();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const getMessages = createAsyncThunk(
   "messages/getAll",
   async (_, thunkAPI) => {
@@ -85,15 +102,15 @@ export const messageSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
-      .addCase(getMessages.pending, (state) => {
+      .addCase(getAllMessages.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getMessages.fulfilled, (state, action) => {
+      .addCase(getAllMessages.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.messages = action.payload;
       })
-      .addCase(getMessages.rejected, (state, action) => {
+      .addCase(getAllMessages.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.messages = action.payload;

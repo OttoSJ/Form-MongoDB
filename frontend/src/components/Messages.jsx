@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getMessages, reset } from "../features/messages/messageSlice";
+import { getAllMessages, reset } from "../features/messages/messageSlice";
 import MessageCards from "./MessageCards";
 import MessageForm from "../components/MessageForm";
 import { useNavigate } from "react-router-dom";
@@ -15,28 +15,24 @@ function Messages() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getMessages());
+    dispatch(getAllMessages());
   }, [user, navigate]);
 
-  // if (messages) {
-  //   console.log(messages);
-  // }
-  return (
-    <div className="container-centered mt-4 ">
-      <h4>Messages</h4>
-      <div className="message-container-border">
-        <section className="container-centered mt-5">
-          {messages.map((message) => (
-            <MessageCards key={message._id} message={message} />
-          ))}
-          {/* <MessageCards messages={messages} /> */}
-        </section>
-      </div>
+  const arrayMessages = [...messages];
+  const reverseMessages = arrayMessages.reverse();
 
-      <footer className="footer bg-dark">
-        <MessageForm />
-      </footer>
-    </div>
+  return (
+    <>
+      <div className="outter-message-container test1 mt-4 ">
+        <div className="message-container-bo-->">
+          <section className="inner-message-container  mt-5">
+            {reverseMessages.map((message) => (
+              <MessageCards key={message._id} message={message} />
+            ))}
+          </section>
+        </div>
+      </div>
+    </>
   );
 }
 

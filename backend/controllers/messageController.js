@@ -9,6 +9,11 @@ const getMessages = asyncHandler(async (req, res) => {
   res.status(200).json(messages);
 });
 
+const getAllMessages = asyncHandler(async (req, res) => {
+  const messages = await Message.find();
+  res.status(200).json(messages);
+});
+
 // SET Messages
 // ROUTE POST/api/games
 // ACCESS Private
@@ -86,4 +91,5 @@ module.exports = {
   setMessages,
   updateMessages,
   deleteMessages,
+  getAllMessages,
 };
