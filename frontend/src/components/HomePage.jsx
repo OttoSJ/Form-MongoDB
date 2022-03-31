@@ -33,7 +33,7 @@ function HomePage() {
         <div className="">
           <Messages />
         </div>
-        <footer className="footer bg-dark">
+        <footer className="footer ">
           <MessageForm />
         </footer>
       </div>
