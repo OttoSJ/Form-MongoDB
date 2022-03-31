@@ -88,8 +88,18 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// This route is not in use currently
 const getUser = asyncHandler(async (req, res) => {
   const { _id, username, email } = await User.findById(req.user.id);
+  res.status(200).json({
+    id: _id,
+    username,
+    email,
+  });
+});
+
+const getAllUsers = asyncHandler(async (req, res) => {
+  const { _id, username, email } = await User.find();
   res.status(200).json({
     id: _id,
     username,
@@ -107,4 +117,5 @@ module.exports = {
   registerUser,
   loginUser,
   getUser,
+  getAllUsers,
 };

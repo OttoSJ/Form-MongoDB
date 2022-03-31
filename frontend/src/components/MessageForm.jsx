@@ -17,7 +17,7 @@ function MessageForm() {
       <form className="message-form" onSubmit={onSubmit}>
         <div className="message-form message-input-container">
           <input
-            className="message-input bg-dark "
+            className="message-input bg-dark"
             type="text"
             name="text"
             id="text"

@@ -1,7 +1,7 @@
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
+import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -20,22 +20,21 @@ function Header() {
     <>
       <Navbar
         expand="lg"
-        className=" bg-dark navbar-dark p-3 d-flex justify-content"
+        className=" bg-dark navbar-dark p-3 d-flex justify-content navbar-container"
       >
-        <Navbar.Brand className="brand-container">
-          {" "}
+        <Navbar.Brand href="/" className="brand-container">
           <div className="img-div mx-2"></div>{" "}
           <div className="">Message Me</div>
         </Navbar.Brand>
         <Navbar.Toggle className="mr-auto" />
         <Navbar.Collapse>
           <Nav className="mr-auto"></Nav>
-
           <Nav.Item>
-            <Nav.Link href="/" className="navbar-brand">
+            <Nav.Link href="/homepage" className="navbar-brand">
               Home
             </Nav.Link>
           </Nav.Item>
+
           {user ? (
             <Nav.Item>
               <Nav.Link href="/dashboard" className="navbar-brand">
@@ -65,6 +64,13 @@ function Header() {
               </Nav.Link>
             </Nav.Item>
           )}
+          {user ? (
+            <Nav.Item>
+              <Nav.Link href="/findusers" className="navbar-brand">
+                <FaSearch />
+              </Nav.Link>
+            </Nav.Item>
+          ) : null}
         </Navbar.Collapse>
       </Navbar>
     </>

@@ -2,14 +2,6 @@
   border-top: 1px solid grey;
 }
 
-.img-div {
-  height: 2rem;
-  width: 2rem;
-  background-color: brown;
-  border-radius: 1rem;
-  border: 2px solid black;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -24,6 +16,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.img-div {
+  height: 2rem;
+  width: 2rem;
+  background-color: brown;
+  border-radius: 1rem;
+  border: 2px solid black;
+}
+
+.navbar-container {
+  width: 100vw;
 }
 
 .mr-auto {
@@ -46,20 +50,20 @@ code {
   justify-content: space-around;
 }
 
-.outter-message-container {
+/* .outter-message-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-}
+  height: auto;
+} */
 
 .inner-message-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20rem;
+  /* padding-top: 20rem; */
   overflow: scroll;
   height: 50rem;
   margin-bottom: 4rem;
@@ -79,12 +83,10 @@ code {
 .container-centered {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: hidden;
   height: 75vh;
-  width: 35.8rem;
-  /* border: 1px solid grey; */
 }
 
 .message-card {
@@ -94,7 +96,8 @@ code {
   padding: 0.5rem;
 }
 
-.message-text {
+.message-text,
+.text {
   color: rgb(184, 184, 184);
 }
 
@@ -147,6 +150,10 @@ code {
 
 .message-line-break {
   color: white;
+}
+
+.header-text {
+  color: brown;
 }
 
 .headings {

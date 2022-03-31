@@ -6,20 +6,14 @@ const {
   registerUser,
   loginUser,
   getUser,
+  getAllUsers,
 } = require("../controllers/userController");
 
 const { protect } = require("../middleware/authMiddleware");
 
-// router.get("/", (req, res) => {
-//   res.render("home");
-// });
-
-// router.get("/signup", (req, res) => {
-//   res.render("signup");
-// });
-
 router.post("/", registerUser);
 router.post("/login", loginUser);
+router.get("/allUsers", protect, getAllUsers);
 router.get("/me", protect, getUser);
 
 module.exports = router;

@@ -26,7 +26,7 @@ function Login() {
       toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/dashboard");
+      navigate("/homepage");
     }
 
     dispatch(reset());
@@ -54,18 +54,19 @@ function Login() {
 
   return (
     <>
-      <header className="headings mt-5">
+      <header className="headings mt-5 ">
         <h1>
-          <p>Registered Users Login</p>
+          <p className="header-text">Registered Users Login</p>
         </h1>
-        <h5>If you have an account with us, log in using your email address</h5>
+        <h5 className="text">
+          If you have an account with us, log in using your email address
+        </h5>
       </header>
-
       <section>
         <form onSubmit={onSubmit} className="mt-5">
           <div className="container-centered">
             <div className="col-6">
-              <label htmlFor="email" className="form-label">
+              <label htmlFor="email" className="form-label text">
                 Email
               </label>
               <input
@@ -80,7 +81,7 @@ function Login() {
             </div>
             <br />
             <div className="col-6">
-              <label htmlFor="password" className="form-label">
+              <label htmlFor="password" className="form-label text">
                 Password
               </label>
               <input

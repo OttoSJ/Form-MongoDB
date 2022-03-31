@@ -14,7 +14,7 @@ function Dashboard() {
   }, [user, navigate]);
 
   return (
-    <div className="headings mt-5">
+    <div className="headings mt-5 header-text">
       <h1>
         <p>Dashboard</p>
       </h1>

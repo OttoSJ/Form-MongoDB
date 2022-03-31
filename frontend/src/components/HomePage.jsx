@@ -15,19 +15,18 @@ function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
     dispatch(getMessages());
   }, [user, navigate]);
-
-  // if (messages) {
-  //   console.log(messages);
-  // }
 
   return (
     <>
       <div className="homepage-container">
         <div className="headings mt-5">
           <h1 className="mb-5">
-            <p className="message-text">Message Me</p>
+            <p className="header-text">Message Me</p>
           </h1>
         </div>
         <div className="">
