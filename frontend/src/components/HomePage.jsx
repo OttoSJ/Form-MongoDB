@@ -27,7 +27,7 @@ function HomePage() {
       <div className="homepage-container">
         <div className="headings mt-5">
           <h1 className="mb-5">
-            <p>HomePage</p>
+            <p className="message-text">Message Me</p>
           </h1>
         </div>
         <div className="">

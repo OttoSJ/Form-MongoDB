@@ -22,7 +22,11 @@ function Header() {
         expand="lg"
         className=" bg-dark navbar-dark p-3 d-flex justify-content"
       >
-        <Navbar.Brand>Message Me</Navbar.Brand>
+        <Navbar.Brand className="brand-container">
+          {" "}
+          <div className="img-div mx-2"></div>{" "}
+          <div className="">Message Me</div>
+        </Navbar.Brand>
         <Navbar.Toggle className="mr-auto" />
         <Navbar.Collapse>
           <Nav className="mr-auto"></Nav>

@@ -24,10 +24,10 @@ function Messages() {
   return (
     <>
       <div className="outter-message-container test1 mt-4 ">
-        <div className="message-container-bo-->">
-          <section className="inner-message-container  mt-5">
+        <div className="mt-5">
+          <section className="inner-message-container bg-dark mt-5">
             {reverseMessages.map((message) => (
-              <MessageCards key={message._id} message={message} />
+              <MessageCards key={message._id} message={message} user={user} />
             ))}
           </section>
         </div>
