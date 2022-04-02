@@ -1,10 +1,11 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMessages, reset } from "../features/messages/messageSlice";
 import Messages from "./Messages";
 import MessageForm from "../components/MessageForm";
+import Navbar from "../components/Navbar";
 
 function HomePage() {
   const { user } = useSelector((state) => state.auth);
@@ -25,9 +26,10 @@ function HomePage() {
     <>
       <div className="homepage-container">
         <div className="headings mt-5">
-          <h1 className="mb-5">
-            <p className="header-text">Message Me</p>
-          </h1>
+          {/* Remove this h1 and child once this is ready for production. It's only here as to identify the current page. */}
+          {/* <h1 className="">
+            <p className="header-text">Message Me Home Page</p>
+          </h1> */}
         </div>
         <div className="">
           <Messages />

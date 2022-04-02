@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
+import { useEffect } from "react";
 
 function Header() {
   const navigate = useNavigate();
@@ -16,6 +17,11 @@ function Header() {
     dispatch(reset());
   };
 
+  useEffect(() => {
+    if (!user) {
+      console.log("No User");
+    }
+  }, [user, navigate]);
   return (
     <>
       <Navbar

@@ -99,12 +99,9 @@ const getUser = asyncHandler(async (req, res) => {
 });
 
 const getAllUsers = asyncHandler(async (req, res) => {
-  const { _id, username, email } = await User.find();
-  res.status(200).json({
-    id: _id,
-    username,
-    email,
-  });
+  const users = await User.find();
+
+  res.status(200).json(users);
 });
 
 const generateToken = (id) => {

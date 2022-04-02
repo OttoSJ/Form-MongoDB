@@ -28,6 +28,7 @@ code {
 
 .navbar-container {
   width: 100vw;
+  position: fixed;
 }
 
 .mr-auto {
@@ -64,8 +65,8 @@ code {
   justify-content: center;
   align-items: center;
   /* padding-top: 20rem; */
-  overflow: scroll;
-  height: 50rem;
+  overflow-y: auto;
+  height: 100%;
   margin-bottom: 4rem;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -85,7 +86,7 @@ code {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
+  overflow-y: auto;
   height: 75vh;
 }
 
@@ -112,15 +113,14 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-
   margin-bottom: -2.8rem;
   margin-top: 3rem;
 }
+
 .message-container-testing {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-
   margin-bottom: -2.8rem;
   margin-top: 3rem;
 }

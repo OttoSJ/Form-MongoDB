@@ -6,18 +6,26 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
   const { user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  // I will need to load users followers onto this dashboard
 
   useEffect(() => {
-    if (!user) {
+    if (!user._id) {
       navigate("/");
     }
   }, [user, navigate]);
+
+  console.log(user._id);
 
   return (
     <div className="headings mt-5 header-text">
       <h1>
         <p>Dashboard</p>
       </h1>
+      <h6>
+        <p className="text">
+          This is where you will come to choose who you want to talk too
+        </p>
+      </h6>
     </div>
   );
 }

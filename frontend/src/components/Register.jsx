@@ -78,7 +78,7 @@ function Register() {
         state,
         zip,
       };
-      console.log(userData);
+
       dispatch(register(userData));
     }
   };
@@ -90,12 +90,12 @@ function Register() {
   return (
     <div>
       <div className="container">
-        <h1 className="mt-5 headings">
+        <h1 className="mt-5 headings text">
           {" "}
           <FaUser /> Register User
           <p className="p-5">Please Create Your Account!</p>
         </h1>
-        <form onSubmit={onSubmit} className="row g-3 mt-3">
+        <form onSubmit={onSubmit} className="row g-3 mt-3 text">
           <div className="col-6">
             <label htmlFor="firstname" className="form-label">
               First Name

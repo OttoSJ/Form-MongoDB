@@ -5,7 +5,6 @@ import React from "react";
 function MessageCards({ message, user }) {
   return (
     <>
-      <p className="">No New Messages</p>
       <div className="m-3 ">
         <hr className="message-line-break" />
         <div className="message-container-testing">
@@ -16,7 +15,7 @@ function MessageCards({ message, user }) {
             <p className="message-text ">{user.username} </p>
           </div>
         </div>
-        <div className="message-card mt-5">
+        <div className="message-card mt-4">
           <p className="message-text">{message.message}</p>
         </div>
       </div>

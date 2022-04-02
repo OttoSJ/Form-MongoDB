@@ -7,6 +7,6 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     messages: messageReducer,
-    follwers: followerReducer,
+    followers: followerReducer,
   },
 });

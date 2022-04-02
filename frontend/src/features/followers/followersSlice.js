@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import followersService from "./followersService";
 
-const user = JSON.parse(localStorage.getItem("user"));
+// const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   followers: [],
@@ -11,11 +11,13 @@ const initialState = {
   message: "",
 };
 
-export const getFollowers = createAsyncThunk(
+export const getAllFollowers = createAsyncThunk(
   "followers/getAll",
-  async (user, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      return await followersService.getAllFollowers(user);
+      // console.log(user);
+      const token = thunkAPI.getState().auth.user.token;
+      return await followersService.getAllFollowers(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -42,15 +44,15 @@ export const followersSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getFollowers.pending, (state) => {
+      .addCase(getAllFollowers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getFollowers.fulfilled, (state, action) => {
+      .addCase(getAllFollowers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.followers = action.payload;
       })
-      .addCase(getFollowers.rejected, (state, action) => {
+      .addCase(getAllFollowers.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
