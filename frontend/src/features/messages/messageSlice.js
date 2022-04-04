@@ -14,7 +14,7 @@ export const createMessage = createAsyncThunk(
   async (messageData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      console.log(messageData);
+      // console.log(messageData);
       return await messageService.createMessage(messageData, token);
     } catch (error) {
       const message =
@@ -32,7 +32,9 @@ export const getAllMessages = createAsyncThunk(
   "messages/getAll",
   async (_, thunkAPI) => {
     try {
-      return await messageService.getAllMessages();
+      const token = thunkAPI.getState().auth.user.token;
+
+      return await messageService.getAllMessages(token);
     } catch (error) {
       const message =
         (error.response &&

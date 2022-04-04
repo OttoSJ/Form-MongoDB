@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMessages, reset } from "../features/messages/messageSlice";
@@ -8,19 +8,33 @@ import MessageForm from "../components/MessageForm";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
+  const [newMessages, setnewMessages] = useState({});
   const { user } = useSelector((state) => state.auth);
-  const { messages, isLoading, message, isError } = useSelector(
-    (state) => state.messages
-  );
+  const { messages } = useSelector((state) => state.messages);
+  const { isSuccess } = useSelector((state) => state.messages);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const messageRef = useRef(null);
+
+  const scrollIntoView = () => {
+    messageRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  };
 
   useEffect(() => {
+    scrollIntoView();
     if (!user) {
       navigate("/login");
     }
     dispatch(getMessages());
-  }, [user, navigate]);
+    setnewMessages(messages);
+    console.log("Updated");
+  }, [user, navigate, newMessages, isSuccess]);
+
+  const handleText = () => {
+    if (messageRef.current) {
+      scrollIntoView();
+    }
+  };
 
   return (
     <>
@@ -31,11 +45,11 @@ function HomePage() {
             <p className="header-text">Message Me Home Page</p>
           </h1> */}
         </div>
-        <div className="">
+        <div ref={messageRef} className="">
           <Messages />
         </div>
         <footer className="footer ">
-          <MessageForm />
+          <MessageForm handleText={handleText} />
         </footer>
       </div>
     </>

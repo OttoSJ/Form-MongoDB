@@ -6,23 +6,26 @@ import MessageCards from "./MessageCards";
 import MessageForm from "../components/MessageForm";
 import { useNavigate } from "react-router-dom";
 import Spinner from "./Spinner";
+import ScrollIntoView from "react-scroll-into-view";
 
 function Messages() {
   const { user } = useSelector((state) => state.auth);
   const { messages, isLoading, message, isError } = useSelector(
     (state) => state.messages
   );
-  const messageEndRef = useRef(null);
+  const messageRef = useRef(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const scrollToBottom = () => {
-    messageEndRef.current.scrollToBottom({ behavior: "smooth" });
+  const scrollIntoView = () => {
+    messageRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
+    scrollIntoView();
+
     dispatch(getAllMessages());
-  }, [user, navigate]);
+  }, [user, navigate, message]);
 
   // const arrayMessages = [...messages];
   // const reverseMessages = arrayMessages.reverse();
@@ -33,9 +36,14 @@ function Messages() {
 
   return (
     <>
-      <section className="inner-message-container bg-dark ">
+      <section ref={messageRef} className="inner-message-container bg-dark ">
         {messages.map((message) => (
-          <MessageCards key={message._id} message={message} user={user} />
+          <MessageCards
+            key={message._id}
+            message={message}
+            user={user}
+            forwardRef={messageRef}
+          />
         ))}
       </section>
     </>

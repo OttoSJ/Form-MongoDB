@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "/api/users/allUsers";
 
-const getAllFollowers = async (token) => {
+const getAllUsers = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -13,7 +13,7 @@ const getAllFollowers = async (token) => {
   return response.data;
 };
 
-const followersService = {
-  getAllFollowers,
+const allUsersService = {
+  getAllUsers,
 };
-export default followersService;
+export default allUsersService;

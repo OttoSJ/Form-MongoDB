@@ -45,6 +45,13 @@ const userSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    conversations: [
+      {
+        type: String,
+        required: false,
+        date: Date.now,
+      },
+    ],
   },
   {
     timestamps: true,

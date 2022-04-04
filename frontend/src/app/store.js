@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice";
 import messageReducer from "../features/messages/messageSlice";
-import followerReducer from "../features/followers/followersSlice";
+import allUsersReducer from "../features/followers/allUsersSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     messages: messageReducer,
-    followers: followerReducer,
+    allUsers: allUsersReducer,
   },
 });

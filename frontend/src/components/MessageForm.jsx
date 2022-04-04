@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createMessage } from "../features/messages/messageSlice";
 
-function MessageForm() {
+function MessageForm({ handleText }) {
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createMessage({ message: text }));
+
     setText("");
   };
   // console.log(text);
@@ -26,7 +27,11 @@ function MessageForm() {
             placeholder="  Text Message"
           />
           <div>
-            <button type="submit" className="message-button">
+            <button
+              onClick={() => handleText()}
+              type="submit"
+              className="message-button"
+            >
               Send
             </button>
           </div>

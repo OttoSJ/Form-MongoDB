@@ -26,6 +26,7 @@ const setMessages = asyncHandler(async (req, res) => {
     message: req.body.message,
     user: req.user.id,
   });
+  console.log("setMessages", req.user.id);
   res.status(200).json(messages);
 });
 

@@ -17,11 +17,6 @@ function Header() {
     dispatch(reset());
   };
 
-  useEffect(() => {
-    if (!user) {
-      console.log("No User");
-    }
-  }, [user, navigate]);
   return (
     <>
       <Navbar

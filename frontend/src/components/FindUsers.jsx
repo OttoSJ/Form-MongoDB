@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMessages, reset } from "../features/messages/messageSlice";
-import { getAllFollowers } from "../features/followers/followersSlice";
+import { getAllUsers } from "../features/followers/allUsersSlice";
 import Button from "react-bootstrap/Button";
 
 function FindUsers() {
   const [query, setQuery] = useState("");
-  const [followed, setFollowed] = useState("");
+  const [followUser, setFollowUser] = useState({});
 
   const { user } = useSelector((state) => state.auth);
-  const { followers } = useSelector((state) => state.followers);
+  const { allUsers } = useSelector((state) => state.allUsers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function FindUsers() {
     if (!user) {
       navigate("/login");
     }
-    dispatch(getAllFollowers());
+    dispatch(getAllUsers());
   }, [user, navigate]);
 
   const handleSearch = (e, search) => {
@@ -27,31 +27,40 @@ function FindUsers() {
     setQuery(search);
   };
 
-  const handlefollow = () => {
+  const handlefollow = (e, followedUser) => {
+    e.preventDefault();
+
+    setFollowUser(followedUser);
     // Display message on the screen that the user is now following the user that was clicked
     //   Wrap navigate in a setTimeOut
 
-    console.log("followed!");
+    console.log(followUser.username, followUser._id);
+    console.log(user.username, user._id);
   };
 
   return (
     <>
       <h1 className="headings mt-5 header-text ">Find Users Page</h1>
       <main className="container-centered mt-5">
-        {followers
-          ? followers
-              .filter((follower) => {
+        {allUsers
+          ? allUsers
+              .filter((filteredUsers) => {
                 if (query === "") {
                   return null;
                 } else if (
-                  follower.username.toLowerCase().includes(query.toLowerCase())
+                  filteredUsers.username
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
                 ) {
-                  return follower;
+                  return filteredUsers;
                 }
               })
-              .map((follower) => (
-                <div onClick={handlefollow} key={follower._id}>
-                  <p className="text mx-5"> {follower.username} </p>
+              .map((filteredUsers) => (
+                <div
+                  onClick={(e) => handlefollow(e, filteredUsers)}
+                  key={filteredUsers._id}
+                >
+                  <p className="text mx-5"> {filteredUsers.username} </p>
                 </div>
               ))
           : null}

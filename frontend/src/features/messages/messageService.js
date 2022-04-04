@@ -8,9 +8,11 @@ const createMessage = async (messageData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-
   const response = await axios.post(API_URL, messageData, config);
 
+  console.log(response.data);
+  console.log(response);
+  console.log(config);
   return response.data;
 };
 
@@ -24,8 +26,13 @@ const getMessages = async (token) => {
   return response.data;
 };
 
-const getAllMessages = async () => {
-  const response = await axios.get(API_URL);
+const getAllMessages = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL, config);
   return response.data;
 };
 

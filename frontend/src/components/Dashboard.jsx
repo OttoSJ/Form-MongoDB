@@ -14,8 +14,6 @@ function Dashboard() {
     }
   }, [user, navigate]);
 
-  console.log(user._id);
-
   return (
     <div className="headings mt-5 header-text">
       <h1>

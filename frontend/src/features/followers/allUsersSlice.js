@@ -1,23 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import followersService from "./followersService";
+import allUsersService from "./allUsersService";
 
 // const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  followers: [],
+  allUsers: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
 };
 
-export const getAllFollowers = createAsyncThunk(
-  "followers/getAll",
+export const getAllUsers = createAsyncThunk(
+  "allUsers/getAll",
   async (_, thunkAPI) => {
     try {
       // console.log(user);
       const token = thunkAPI.getState().auth.user.token;
-      return await followersService.getAllFollowers(token);
+      return await allUsersService.getAllUsers(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -30,8 +30,8 @@ export const getAllFollowers = createAsyncThunk(
   }
 );
 
-export const followersSlice = createSlice({
-  name: "followers",
+export const allUsersSlice = createSlice({
+  name: "allUsers",
   initialState,
   reducers: {
     reset: (state) => {
@@ -44,22 +44,22 @@ export const followersSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getAllFollowers.pending, (state) => {
+      .addCase(getAllUsers.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getAllFollowers.fulfilled, (state, action) => {
+      .addCase(getAllUsers.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.followers = action.payload;
+        state.allUsers = action.payload;
       })
-      .addCase(getAllFollowers.rejected, (state, action) => {
+      .addCase(getAllUsers.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
-        state.followers = null;
+        state.allUsers = null;
       });
   },
 });
 
-export const { reset } = followersSlice.actions;
-export default followersSlice.reducer;
+export const { reset } = allUsersSlice.actions;
+export default allUsersSlice.reducer;
